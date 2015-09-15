@@ -55,6 +55,10 @@ public abstract class CommonFragment extends Fragment {
         getFragmentManager().popBackStack(1, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
+    protected void popFragment() {
+        getFragmentManager().popBackStack();
+    }
+
     public abstract String getTitle();
 
     private LinkedList<Runnable> pendingTransactions = new LinkedList<>();

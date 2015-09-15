@@ -6,6 +6,7 @@ package com.vanbios.autoaddapp.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
 import com.vanbios.autoaddapp.fragments.FrgAutoItem;
 
 public class ViewPagerIntroductionAdapter extends FragmentPagerAdapter {

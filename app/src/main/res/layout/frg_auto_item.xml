@@ -105,7 +105,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/layoutAutoItemChoose"
     android:layout_alignParentBottom="true"
-    android:background="@color/custom_yellow">
+    android:background="@drawable/rounded_yellow_only_bottom">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

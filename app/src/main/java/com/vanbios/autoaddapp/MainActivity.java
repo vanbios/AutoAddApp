@@ -8,15 +8,19 @@ import android.os.Bundle;
 
 import com.vanbios.autoaddapp.fragments.CommonFragment;
 import com.vanbios.autoaddapp.fragments.FrgAutoChoose;
-import com.vanbios.autoaddapp.fragments.FrgAutoItem;
+import com.vanbios.autoaddapp.fragments.FrgBackground;
+import com.vanbios.autoaddapp.utils.ToastUtils;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static long backPressExitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        addFragment(new FrgBackground());
         addFragment(new FrgAutoChoose());
     }
 
@@ -54,4 +58,23 @@ public class MainActivity extends AppCompatActivity {
     private void popAllFragments() {
         getSupportFragmentManager().popBackStack(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getTopFragment();
+        if (fragment instanceof CommonFragment) {
+
+            if (backPressExitTime + 2000 > System.currentTimeMillis()) {
+                popAllFragments();
+                this.finish();
+
+            } else {
+                ToastUtils.showClosableToast(this, getString(R.string.press_again_to_exit), 1);
+                backPressExitTime = System.currentTimeMillis();
+            }
+        } else {
+            popFragment();
+        }
+    }
+
 }

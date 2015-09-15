@@ -27,5 +27,6 @@
     <color name="custom_red">#ff0000</color>
     <color name="custom_text_gray">#808080</color>
     <color name="custom_gray_dot">#5a5a5a</color>
+    <color name="custom_black_semi_transparent">#CC000000</color>
 
 </resources>

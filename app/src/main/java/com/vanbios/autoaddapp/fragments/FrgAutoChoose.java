@@ -136,6 +136,10 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
                 }
                 break;
             }
+
+            case R.id.tvAutoChooseCancel: {
+                popFragment();
+            }
         }
     }
 
@@ -195,6 +199,9 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         for (TextView tv : tvMetricArray) {
             tv.setOnClickListener(this);
         }
+
+        TextView tvCancel = (TextView) view.findViewById(R.id.tvAutoChooseCancel);
+        tvCancel.setOnClickListener(this);
     }
 
     private void setViewPager() {
