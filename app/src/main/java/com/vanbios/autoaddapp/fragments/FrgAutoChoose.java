@@ -15,13 +15,14 @@ import com.vanbios.autoaddapp.adapters.ViewPagerIntroductionAdapter;
 /**
  * Created by Ihor Bilous on 11.09.2015.
  */
-public class FrgAutoChoose extends CommonFragment {
+public class FrgAutoChoose extends CommonFragment implements View.OnClickListener {
 
     private View view;
     private ViewPager pager;
     private ImageView[] dotsArray;
     private TextView[] tvTonnageArray, tvMetricArray;
-    private static int activeDotPos = 0, pagePos = 0;
+    private String[] metricValArray;
+    private static int activeDotPos = 0, pagePos = 0, tonnagePos = 0;
     private static final float MIN_SCALE = 0.8f;
     private static final float MIN_ALPHA = 0.7f;
     private static final int SDK_VER = android.os.Build.VERSION.SDK_INT;
@@ -34,6 +35,108 @@ public class FrgAutoChoose extends CommonFragment {
         initViews();
         setViewPager();
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tvAutoChooseTypeTonnage1: {
+                pager.setCurrentItem(0);
+                break;
+            }
+            case R.id.tvAutoChooseTypeTonnage2: {
+                pager.setCurrentItem(14);
+                break;
+            }
+            case R.id.tvAutoChooseTypeTonnage3: {
+                pager.setCurrentItem(17);
+                break;
+            }
+            case R.id.tvAutoChooseTypeTonnage4: {
+                pager.setCurrentItem(20);
+                break;
+            }
+            case R.id.tvAutoChooseTypeTonnage5: {
+                pager.setCurrentItem(23);
+                break;
+            }
+
+            case R.id.tvAutoChooseTypeMetric1: {
+                switch (tonnagePos) {
+                    case 0: {
+                        pager.setCurrentItem(0);
+                        break;
+                    }
+                    case 1: {
+                        pager.setCurrentItem(14);
+                        break;
+                    }
+                    case 2: {
+                        pager.setCurrentItem(17);
+                        break;
+                    }
+                    case 3: {
+                        pager.setCurrentItem(20);
+                        break;
+                    }
+                    case 4: {
+                        pager.setCurrentItem(23);
+                        break;
+                    }
+                }
+                break;
+            }
+            case R.id.tvAutoChooseTypeMetric2: {
+                switch (tonnagePos) {
+                    case 0: {
+                        pager.setCurrentItem(5);
+                        break;
+                    }
+                    case 1: {
+                        pager.setCurrentItem(15);
+                        break;
+                    }
+                    case 2: {
+                        pager.setCurrentItem(18);
+                        break;
+                    }
+                    case 3: {
+                        pager.setCurrentItem(21);
+                        break;
+                    }
+                    case 4: {
+                        pager.setCurrentItem(24);
+                        break;
+                    }
+                }
+                break;
+            }
+            case R.id.tvAutoChooseTypeMetric3: {
+                switch (tonnagePos) {
+                    case 0: {
+                        pager.setCurrentItem(10);
+                        break;
+                    }
+                    case 1: {
+                        pager.setCurrentItem(16);
+                        break;
+                    }
+                    case 2: {
+                        pager.setCurrentItem(19);
+                        break;
+                    }
+                    case 3: {
+                        pager.setCurrentItem(22);
+                        break;
+                    }
+                    case 4: {
+                        pager.setCurrentItem(25);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
     }
 
     private void initViews() {
@@ -67,6 +170,7 @@ public class FrgAutoChoose extends CommonFragment {
         TextView tvTonnage5 = (TextView) view.findViewById(R.id.tvAutoChooseTypeTonnage5);
 
         tvPadding = tvTonnage1.getPaddingTop();
+        metricValArray = getResources().getStringArray(R.array.auto_types_metric_string_array);
 
         tvTonnageArray = new TextView[5];
         tvTonnageArray[0] = tvTonnage1;
@@ -74,6 +178,10 @@ public class FrgAutoChoose extends CommonFragment {
         tvTonnageArray[2] = tvTonnage3;
         tvTonnageArray[3] = tvTonnage4;
         tvTonnageArray[4] = tvTonnage5;
+
+        for (TextView tv : tvTonnageArray) {
+            tv.setOnClickListener(this);
+        }
 
         TextView tvMetric1 = (TextView) view.findViewById(R.id.tvAutoChooseTypeMetric1);
         TextView tvMetric2 = (TextView) view.findViewById(R.id.tvAutoChooseTypeMetric2);
@@ -83,6 +191,10 @@ public class FrgAutoChoose extends CommonFragment {
         tvMetricArray[0] = tvMetric1;
         tvMetricArray[1] = tvMetric2;
         tvMetricArray[2] = tvMetric3;
+
+        for (TextView tv : tvMetricArray) {
+            tv.setOnClickListener(this);
+        }
     }
 
     private void setViewPager() {
@@ -91,6 +203,7 @@ public class FrgAutoChoose extends CommonFragment {
         pager.setAdapter(pagerIntroductionAdapter);
 
         setDotsArray(0);
+        setTypeViews(0);
 
         pager.setClipToPadding(false);
         //pager.setPageMargin(4);
@@ -286,6 +399,13 @@ public class FrgAutoChoose extends CommonFragment {
 
         setTonnageTVArray(tonPos);
         setMetricTVArray(metPos);
+        tonnagePos = tonPos;
+        if (pos <= 13) {
+            setMetricTVValues(0);
+        }
+        else {
+            setMetricTVValues(1);
+        }
     }
 
     private void setTonnageTVArray(int pos) {
@@ -306,6 +426,19 @@ public class FrgAutoChoose extends CommonFragment {
             }
             else {
                 setMetricStatus(tvMetricArray[i], false);
+            }
+        }
+    }
+
+    private void setMetricTVValues(int type) {
+        if (type == 0) {
+            for (int i = 0; i < tvMetricArray.length; i++) {
+                tvMetricArray[i].setText(metricValArray[i]);
+            }
+        }
+        else {
+            for (int i = 0; i < tvMetricArray.length; i++) {
+                tvMetricArray[i].setText(metricValArray[i+3]);
             }
         }
     }
