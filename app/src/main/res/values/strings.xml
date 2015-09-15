@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">AutoAddApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="mcad">МКАД</string>
+    <string name="out_mcad">за МКАД</string>
+    <string name="rub_per_hour">₴ час</string>
+
+
+
+
+    <string-array name="auto_name_string_array">
+        <item>Газель тент</item>
+        <item>Газель фургон</item>
+        <item>Газель евротент</item>
+        <item>Газель фургон высокий</item>
+        <item>Газель бортовая открытая</item>
+
+        <item>Газель тент</item>
+        <item>Газель фургон</item>
+        <item>Газель евротент</item>
+        <item>Газель фургон высокий</item>
+        <item>Газель бортовая открытая</item>
+
+        <item>Газель фермер тент</item>
+        <item>Газель фермер фургон</item>
+        <item>Газель фермер евротент</item>
+        <item>Газель фермер LUX</item>
+        <item>Грузовик тент</item>
+
+        <item>Грузовик фургон</item>
+        <item>Грузовик бортовой</item>
+        <item>Грузовик тент</item>
+        <item>Грузовик фургон</item>
+        <item>Грузовик бортовой</item>
+
+        <item>Грузовик тент</item>
+        <item>Грузовик фургон</item>
+        <item>Грузовик бортовой</item>
+        <item>Евро тент</item>
+        <item>Евро фургон</item>
+
+        <item>Шаланда</item>
+
+    </string-array>
+
+    <string-array name="auto_types_tonnage_string_array">
+        <item>1,5 т</item>
+        <item>3 т</item>
+        <item>5 т</item>
+        <item>10 т</item>
+        <item>20 т</item>
+    </string-array>
+
+    <string-array name="auto_types_metric_string_array">
+        <item>3 метра</item>
+        <item>4 метра</item>
+        <item>другое</item>
+        <item>тент</item>
+        <item>фургон</item>
+        <item>бортовой</item>
+    </string-array>
+
+</resources>

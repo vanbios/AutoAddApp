@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="auto_image_array">
+        <item>@drawable/a01__hazel_tent__3m1_5t1</item>
+        <item>@drawable/a02__hazel_van_3m_1</item>
+        <item>@drawable/a03__hazel_eurotent_3m</item>
+        <item>@drawable/a04__hazel_van_tall__3m</item>
+        <item>@drawable/a05__hazel_board_open__3m</item>
+
+        <item>@drawable/a06__hazel_tent__4m</item>
+        <item>@drawable/a07__hazel_van__4m</item>
+        <item>@drawable/a08__hazel_eurotent_4m</item>
+        <item>@drawable/a09__hazel_van_tall__4m</item>
+        <item>@drawable/a10__hazel_board_open__4m</item>
+
+        <item>@drawable/a11__hazel_farmer_tent__3m</item>
+        <item>@drawable/a12__hazel_farmer_van__3m</item>
+        <item>@drawable/a13__hazel_farmer_eurotent__3m</item>
+        <item>@drawable/a14__hazel_farmer_lux__4m</item>
+        <item>@drawable/a15__truck_tent__4m</item>
+
+        <item>@drawable/a16__truck_van__4m</item>
+        <item>@drawable/a17__truck_board__4m</item>
+        <item>@drawable/a18__truck_tent__5m</item>
+        <item>@drawable/a19__truck_van__5m</item>
+        <item>@drawable/a20__truck_baord__5m</item>
+
+        <item>@drawable/a21__truck_tent__6m</item>
+        <item>@drawable/a22__truck_van__6m</item>
+        <item>@drawable/a23__truck_board__6m</item>
+        <item>@drawable/a24__euro_tent__13_6m</item>
+        <item>@drawable/a25__euro_truck__13_6m</item>
+
+        <item>@drawable/a26__shalanda__13_6m</item>
+    </array>
+</resources>
