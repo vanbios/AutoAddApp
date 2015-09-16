@@ -43,7 +43,7 @@
     </style>
 
     <style name="SubTitleFontGray" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/text_size_subhead</item>
         <item name="android:textColor">@color/custom_text_gray</item>
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">sans</item>

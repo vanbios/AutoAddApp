@@ -20,7 +20,7 @@ public class FrgAutoItem extends Fragment {
     private static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
     private int pageNumber;
     private TypedArray imageArray;
-    private String[] titles;
+    private String[] titles, priceMcad, priceOutMcad;
 
 
     public static FrgAutoItem newInstance(int page) {
@@ -37,6 +37,8 @@ public class FrgAutoItem extends Fragment {
         pageNumber = getArguments().getInt(ARGUMENT_PAGE_NUMBER);
         imageArray = getResources().obtainTypedArray(R.array.auto_image_array);
         titles = getResources().getStringArray(R.array.auto_name_string_array);
+        priceMcad = getResources().getStringArray(R.array.auto_price_mcad_string_array);
+        priceOutMcad = getResources().getStringArray(R.array.auto_price_out_mcad_string_array);
     }
 
     @Override
@@ -48,6 +50,10 @@ public class FrgAutoItem extends Fragment {
         ivAuto.setImageDrawable(imageArray.getDrawable(pageNumber));
         TextView tvTitle = (TextView) view.findViewById(R.id.tvAutoItemName);
         tvTitle.setText(titles[pageNumber]);
+        TextView tvPriceMcad = (TextView) view.findViewById(R.id.tvAutoItemPriceMCAD);
+        TextView tvPriceOutMcad = (TextView) view.findViewById(R.id.tvAutoItemPriceOutMCAD);
+        tvPriceMcad.setText(priceMcad[pageNumber]);
+        tvPriceOutMcad.setText(priceOutMcad[pageNumber]);
 
         return view;
     }

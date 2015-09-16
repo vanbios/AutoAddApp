@@ -41,8 +41,8 @@
         <item>Грузовик тент</item>
         <item>Грузовик фургон</item>
         <item>Грузовик бортовой</item>
-        <item>Евро тент</item>
-        <item>Евро фургон</item>
+        <item>Евротент</item>
+        <item>Еврофургон</item>
 
         <item>Шаланда</item>
 
@@ -63,6 +63,79 @@
         <item>тент</item>
         <item>фургон</item>
         <item>бортовой</item>
+    </string-array>
+
+
+
+    <string-array name="auto_price_mcad_string_array">
+        <item>900</item>
+        <item>910</item>
+        <item>920</item>
+        <item>930</item>
+        <item>940</item>
+
+        <item>950</item>
+        <item>960</item>
+        <item>970</item>
+        <item>980</item>
+        <item>990</item>
+
+        <item>1000</item>
+        <item>1010</item>
+        <item>1020</item>
+        <item>1030</item>
+        <item>1040</item>
+
+        <item>1050</item>
+        <item>1060</item>
+        <item>1070</item>
+        <item>1080</item>
+        <item>1090</item>
+
+        <item>1100</item>
+        <item>1110</item>
+        <item>1120</item>
+        <item>1130</item>
+        <item>1140</item>
+
+        <item>1150</item>
+
+    </string-array>
+
+
+    <string-array name="auto_price_out_mcad_string_array">
+        <item>1200</item>
+        <item>1210</item>
+        <item>1220</item>
+        <item>1230</item>
+        <item>1240</item>
+
+        <item>1250</item>
+        <item>1260</item>
+        <item>1270</item>
+        <item>1280</item>
+        <item>1290</item>
+
+        <item>1300</item>
+        <item>1310</item>
+        <item>1320</item>
+        <item>1330</item>
+        <item>1340</item>
+
+        <item>1350</item>
+        <item>1360</item>
+        <item>1370</item>
+        <item>1380</item>
+        <item>1390</item>
+
+        <item>1400</item>
+        <item>1410</item>
+        <item>1420</item>
+        <item>1430</item>
+        <item>1440</item>
+
+        <item>1450</item>
+
     </string-array>
 
 </resources>

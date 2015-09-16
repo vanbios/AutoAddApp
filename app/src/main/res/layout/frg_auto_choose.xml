@@ -32,7 +32,7 @@
                 style="@style/SubTitleFontGray"
                 android:paddingTop="@dimen/common_padding_medium"
                 android:paddingBottom="@dimen/common_padding_medium"
-                android:background="@drawable/rounded_white"
+                android:background="@drawable/rounded_green"
                 android:textColor="@color/white"/>
 
             <TextView
@@ -85,6 +85,55 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutAutoChooseTypesTriangles"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_black">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:layout_weight="1"
+            android:id="@+id/ivAutoChooseTriangle1"
+            android:src="@drawable/triangle_green_16dp"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:layout_weight="1"
+            android:id="@+id/ivAutoChooseTriangle2"
+            android:src="@drawable/triangle_green_16dp"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:layout_weight="1"
+            android:id="@+id/ivAutoChooseTriangle3"
+            android:src="@drawable/triangle_green_16dp"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:layout_weight="1"
+            android:id="@+id/ivAutoChooseTriangle4"
+            android:src="@drawable/triangle_green_16dp"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:layout_weight="1"
+            android:id="@+id/ivAutoChooseTriangle5"
+            android:src="@drawable/triangle_green_16dp"
+            android:visibility="invisible"/>
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,7 +149,6 @@
                 android:text="3 метра"
                 android:gravity="center"
                 style="@style/SubTitleFontGray"
-                android:paddingTop="@dimen/common_padding_medium"
                 android:paddingBottom="@dimen/common_padding_medium"
                 android:textColor="@color/custom_text_green"/>
 
@@ -112,7 +160,6 @@
                 android:text="4 метра"
                 android:gravity="center"
                 style="@style/SubTitleFontGray"
-                android:paddingTop="@dimen/common_padding_medium"
                 android:paddingBottom="@dimen/common_padding_medium"/>
 
             <TextView
@@ -123,7 +170,6 @@
                 android:text="другое"
                 android:gravity="center"
                 style="@style/SubTitleFontGray"
-                android:paddingTop="@dimen/common_padding_medium"
                 android:paddingBottom="@dimen/common_padding_medium"/>
 
         </LinearLayout>

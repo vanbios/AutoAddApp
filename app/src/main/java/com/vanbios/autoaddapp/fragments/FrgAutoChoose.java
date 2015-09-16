@@ -19,7 +19,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
 
     private View view;
     private ViewPager pager;
-    private ImageView[] dotsArray;
+    private ImageView[] dotsArray, trianglesArray;
     private TextView[] tvTonnageArray, tvMetricArray;
     private String[] metricValArray;
     private static int activeDotPos = 0, pagePos = 0, tonnagePos = 0;
@@ -202,6 +202,19 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
 
         TextView tvCancel = (TextView) view.findViewById(R.id.tvAutoChooseCancel);
         tvCancel.setOnClickListener(this);
+
+        ImageView ivTriangle1 = (ImageView) view.findViewById(R.id.ivAutoChooseTriangle1);
+        ImageView ivTriangle2 = (ImageView) view.findViewById(R.id.ivAutoChooseTriangle2);
+        ImageView ivTriangle3 = (ImageView) view.findViewById(R.id.ivAutoChooseTriangle3);
+        ImageView ivTriangle4 = (ImageView) view.findViewById(R.id.ivAutoChooseTriangle4);
+        ImageView ivTriangle5 = (ImageView) view.findViewById(R.id.ivAutoChooseTriangle5);
+
+        trianglesArray = new ImageView[5];
+        trianglesArray[0] = ivTriangle1;
+        trianglesArray[1] = ivTriangle2;
+        trianglesArray[2] = ivTriangle3;
+        trianglesArray[3] = ivTriangle4;
+        trianglesArray[4] = ivTriangle5;
     }
 
     private void setViewPager() {
@@ -419,6 +432,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         for (int i = 0; i < tvTonnageArray.length; i++) {
             if (i == pos) {
                 setTonnageStatus(tvTonnageArray[i], true);
+                setTrianglesArray(i);
             }
             else {
                 setTonnageStatus(tvTonnageArray[i], false);
@@ -478,6 +492,26 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         }
         else {
             tv.setTextColor(ContextCompat.getColor(getContext(), R.color.custom_text_gray));
+        }
+    }
+
+    private void setTrianglesArray(int pos) {
+        for (int i = 0; i < trianglesArray.length; i++) {
+            if (i == pos) {
+                setTrianglesImageStatus(trianglesArray[i], true);
+            }
+            else {
+                setTrianglesImageStatus(trianglesArray[i], false);
+            }
+        }
+    }
+
+    private void setTrianglesImageStatus(ImageView imageView, boolean active) {
+        if (active) {
+            imageView.setVisibility(View.VISIBLE);
+        }
+        else {
+            imageView.setVisibility(View.INVISIBLE);
         }
     }
 
