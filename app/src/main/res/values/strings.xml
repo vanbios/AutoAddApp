@@ -6,7 +6,7 @@
 
     <string name="mcad">МКАД</string>
     <string name="out_mcad">за МКАД</string>
-    <string name="rub_per_hour">Р час</string>
+    <string name="rub_per_hour">час</string>
 
     <string name="press_again_to_exit">Для выхода нажмите еще раз</string>
 
@@ -18,12 +18,12 @@
         <item>Газель фургон</item>
         <item>Газель евротент</item>
         <item>Газель фургон высокий</item>
-        <item>Газель бортовая открытая</item>
-
         <item>Газель тент</item>
+
         <item>Газель фургон</item>
         <item>Газель евротент</item>
         <item>Газель фургон высокий</item>
+        <item>Газель бортовая открытая</item>
         <item>Газель бортовая открытая</item>
 
         <item>Газель фермер тент</item>

@@ -1,6 +1,8 @@
 package com.vanbios.autoaddapp.fragments;
 
+import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vanbios.autoaddapp.R;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Ihor Bilous on 11.09.2015.
@@ -21,6 +25,7 @@ public class FrgAutoItem extends Fragment {
     private int pageNumber;
     private TypedArray imageArray;
     private String[] titles, priceMcad, priceOutMcad;
+    private Typeface tfHelveticaBold, tfHelveticaLight, tfHelveticaMedium;
 
 
     public static FrgAutoItem newInstance(int page) {
@@ -48,14 +53,40 @@ public class FrgAutoItem extends Fragment {
 
         ImageView ivAuto = (ImageView) view.findViewById(R.id.ivAutoItemImage);
         ivAuto.setImageDrawable(imageArray.getDrawable(pageNumber));
+
         TextView tvTitle = (TextView) view.findViewById(R.id.tvAutoItemName);
         tvTitle.setText(titles[pageNumber]);
+        tvTitle.setTypeface(tfHelveticaLight);
+
         TextView tvPriceMcad = (TextView) view.findViewById(R.id.tvAutoItemPriceMCAD);
         TextView tvPriceOutMcad = (TextView) view.findViewById(R.id.tvAutoItemPriceOutMCAD);
         tvPriceMcad.setText(priceMcad[pageNumber]);
         tvPriceOutMcad.setText(priceOutMcad[pageNumber]);
+        tvPriceMcad.setTypeface(tfHelveticaMedium);
+        tvPriceOutMcad.setTypeface(tfHelveticaMedium);
+
+        TextView tvMcadName = (TextView) view.findViewById(R.id.tvAutoItemMCADName);
+        TextView tvOutMcadName = (TextView) view.findViewById(R.id.tvAutoItemOutMCADName);
+        TextView tvMcadPerHour = (TextView) view.findViewById(R.id.tvAutoItemMCADPerHour);
+        TextView tvOutMcadPerHour = (TextView) view.findViewById(R.id.tvAutoItemOutMCADPerHour);
+        tvMcadName.setTypeface(tfHelveticaLight);
+        tvOutMcadName.setTypeface(tfHelveticaLight);
+        tvMcadPerHour.setTypeface(tfHelveticaLight);
+        tvOutMcadPerHour.setTypeface(tfHelveticaLight);
+
+        TextView tvChoose = (TextView) view.findViewById(R.id.tvAutoItemChoose);
+        tvChoose.setTypeface(tfHelveticaLight);
 
         return view;
+    }
+
+    @Override
+    public void onAttach (Context context) {
+        super.onAttach(context);
+
+        tfHelveticaBold = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Bold.ttf");
+        tfHelveticaLight = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Light.ttf");
+        tfHelveticaMedium = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Medium.ttf");
     }
 
 }

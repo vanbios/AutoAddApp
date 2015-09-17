@@ -5,12 +5,12 @@
         <item>@drawable/a02__hazel_van_3m_1</item>
         <item>@drawable/a03__hazel_eurotent_3m</item>
         <item>@drawable/a04__hazel_van_tall__3m</item>
-        <item>@drawable/a05__hazel_board_open__3m</item>
+        <item>@drawable/a05__hazel_tent__4m</item>
 
-        <item>@drawable/a06__hazel_tent__4m</item>
-        <item>@drawable/a07__hazel_van__4m</item>
-        <item>@drawable/a08__hazel_eurotent_4m</item>
-        <item>@drawable/a09__hazel_van_tall__4m</item>
+        <item>@drawable/a06__hazel_van__4m</item>
+        <item>@drawable/a07__hazel_eurotent_4m</item>
+        <item>@drawable/a08__hazel_van_tall__4m</item>
+        <item>@drawable/a09__hazel_board_open__3m</item>
         <item>@drawable/a10__hazel_board_open__4m</item>
 
         <item>@drawable/a11__hazel_farmer_tent__3m</item>
