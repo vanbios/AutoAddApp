@@ -13,19 +13,17 @@ import android.widget.TextView;
 
 import com.vanbios.autoaddapp.R;
 
-import org.w3c.dom.Text;
 
 /**
  * Created by Ihor Bilous on 11.09.2015.
  */
 public class FrgAutoItem extends Fragment {
 
-    private View view;
     private static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
     private int pageNumber;
     private TypedArray imageArray;
     private String[] titles, priceMcad, priceOutMcad;
-    private Typeface tfHelveticaBold, tfHelveticaLight, tfHelveticaMedium;
+    private Typeface tfHelveticaLight, tfHelveticaMedium;
 
 
     public static FrgAutoItem newInstance(int page) {
@@ -49,7 +47,7 @@ public class FrgAutoItem extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frg_auto_item, container, false);
+        View view = inflater.inflate(R.layout.frg_auto_item, container, false);
 
         ImageView ivAuto = (ImageView) view.findViewById(R.id.ivAutoItemImage);
         ivAuto.setImageDrawable(imageArray.getDrawable(pageNumber));
@@ -81,10 +79,9 @@ public class FrgAutoItem extends Fragment {
     }
 
     @Override
-    public void onAttach (Context context) {
+    public void onAttach(Context context) {
         super.onAttach(context);
 
-        tfHelveticaBold = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Bold.ttf");
         tfHelveticaLight = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Light.ttf");
         tfHelveticaMedium = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Medium.ttf");
     }

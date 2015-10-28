@@ -3,6 +3,7 @@ package com.vanbios.autoaddapp.fragments;
 /**
  * Created by Ihor Bilous on 11.09.2015.
  */
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,55 +22,10 @@ public abstract class CommonFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-        while(!pendingTransactions.isEmpty()){
-            Log.d("COLLIDER", "Executing pending transaction");
-            pendingTransactions.pollFirst().run();
-        }
-    }
-
-    public String getRealTag(){
-        return this.getClass().getName();
-    }
-
-    protected void addFragment(CommonFragment f){
-        ((MainActivity) getActivity()).addFragment(f);
-    }
-
-    protected void replaceFragment(CommonFragment f){
-        ((MainActivity) getActivity()).replaceFragment(f);
-    }
-
-    protected void finish(){
-        tryExecuteTransaction(new Runnable() {
-            @Override
-            public void run() {
-                getFragmentManager().popBackStack();
-            }
-        });
-    }
-
-    protected void popAll(){
-        getFragmentManager().popBackStack(1, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-    }
-
     protected void popFragment() {
         getFragmentManager().popBackStack();
     }
 
     public abstract String getTitle();
-
-    private LinkedList<Runnable> pendingTransactions = new LinkedList<>();
-
-    protected void tryExecuteTransaction(Runnable runnable){
-        if(isResumed()){
-            runnable.run();
-        }else{
-            Log.d("COLLIDER", "Scheduling pending transaction");
-            pendingTransactions.addLast(runnable);
-        }
-    }
 
 }

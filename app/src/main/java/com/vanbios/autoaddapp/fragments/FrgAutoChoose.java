@@ -1,12 +1,10 @@
 package com.vanbios.autoaddapp.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +29,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
     private static final float MIN_ALPHA = 0.7f;
     private static final int SDK_VER = android.os.Build.VERSION.SDK_INT;
     private static int tvPadding;
-    private Typeface tfHelveticaBold, tfHelveticaLight, tfHelveticaMedium;
+    private Typeface tfHelveticaLight, tfHelveticaMedium;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -227,49 +225,36 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
 
     private void setViewPager() {
         pager = (ViewPager) view.findViewById(R.id.pagerAutoChoose);
-        ViewPagerIntroductionAdapter pagerIntroductionAdapter = new ViewPagerIntroductionAdapter(getFragmentManager());
+        ViewPagerIntroductionAdapter pagerIntroductionAdapter = new ViewPagerIntroductionAdapter(getChildFragmentManager());
         pager.setAdapter(pagerIntroductionAdapter);
 
         setDotsArray(0);
         setTypeViews(0);
 
         pager.setClipToPadding(false);
-        //pager.setPageMargin(4);
 
         pager.setPageTransformer(false, new ViewPager.PageTransformer() {
             @Override
             public void transformPage(View view, float position) {
                 int pageWidth = view.getWidth();
-                //int pageHeight = view.getHeight();
-                //float vertMargin = pageHeight * (1 - scaleFactor) / 2;
-                //float horzMargin = pageWidth * (1 - scaleFactor) / 2;
-
                 float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
 
-                if (position < 0) {
+                if (position < 0) {     // [-Infinity, 0)
+
                     view.setScaleX(scaleFactor);
                     view.setScaleY(scaleFactor);
 
                     view.setAlpha(MIN_ALPHA +
                             (scaleFactor - MIN_SCALE) /
                                     (1 - MIN_SCALE) * (1 - MIN_ALPHA));
-                }
-
-                else if (position >= 0 && position <= 1) { // (0,1]
-                    // Modify the default slide transition to shrink the page as well
-
-                    /*if (position < 0) {
-                        view.setTranslationX(horzMargin - vertMargin / 2);
-                    } else {
-                        view.setTranslationX(-horzMargin + vertMargin / 2);
-                    }*/
+                } else if (position >= 0 && position <= 1) {    // [0,1]
 
                     view.setScaleX(1);
                     view.setScaleY(1);
                     view.setAlpha(1);
 
-                } else { // [-Infinity, 0] && (1,+Infinity]
-                    // This page is way off-screen to the left and right.
+                } else {     // (1,+Infinity]
+
                     view.setScaleX(scaleFactor);
                     view.setScaleY(scaleFactor);
 
@@ -279,9 +264,8 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
                 }
 
                 if (pagePos == 25) {
-                    view.setTranslationX(- pageWidth / 12);
-                }
-                else {
+                    view.setTranslationX(-pageWidth / 12);
+                } else {
                     view.setTranslationX(0f);
                 }
             }
@@ -383,7 +367,8 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
             case 15: {
                 tonPos = 1;
                 metPos = 0;
-                break;}
+                break;
+            }
             case 16: {
                 tonPos = 1;
                 metPos = 1;
@@ -446,8 +431,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         tonnagePos = tonPos;
         if (pos <= 13) {
             setMetricTVValues(0);
-        }
-        else {
+        } else {
             setMetricTVValues(1);
         }
     }
@@ -457,8 +441,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
             if (i == pos) {
                 setTonnageStatus(tvTonnageArray[i], true);
                 setTrianglesArray(i);
-            }
-            else {
+            } else {
                 setTonnageStatus(tvTonnageArray[i], false);
             }
         }
@@ -468,8 +451,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         for (int i = 0; i < tvMetricArray.length; i++) {
             if (i == pos) {
                 setMetricStatus(tvMetricArray[i], true);
-            }
-            else {
+            } else {
                 setMetricStatus(tvMetricArray[i], false);
             }
         }
@@ -480,10 +462,9 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
             for (int i = 0; i < tvMetricArray.length; i++) {
                 tvMetricArray[i].setText(metricValArray[i]);
             }
-        }
-        else {
+        } else {
             for (int i = 0; i < tvMetricArray.length; i++) {
-                tvMetricArray[i].setText(metricValArray[i+3]);
+                tvMetricArray[i].setText(metricValArray[i + 3]);
             }
         }
     }
@@ -492,30 +473,26 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         if (active) {
             if (SDK_VER < android.os.Build.VERSION_CODES.JELLY_BEAN) {
                 tv.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_green));
-            }
-            else {
+            } else {
                 tv.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.rounded_green));
             }
             tv.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-        }
-        else {
+        } else {
             if (SDK_VER < android.os.Build.VERSION_CODES.JELLY_BEAN) {
                 tv.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_white));
-            }
-            else {
+            } else {
                 tv.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.rounded_white));
             }
-            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.custom_text_gray));
+            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.text_gray));
         }
         tv.setPadding(0, tvPadding, 0, tvPadding);
     }
 
     private void setMetricStatus(TextView tv, boolean active) {
         if (active) {
-            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.custom_text_green));
-        }
-        else {
-            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.custom_text_gray));
+            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.text_green));
+        } else {
+            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.text_gray));
         }
     }
 
@@ -523,8 +500,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         for (int i = 0; i < trianglesArray.length; i++) {
             if (i == pos) {
                 setTrianglesImageStatus(trianglesArray[i], true);
-            }
-            else {
+            } else {
                 setTrianglesImageStatus(trianglesArray[i], false);
             }
         }
@@ -533,8 +509,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
     private void setTrianglesImageStatus(ImageView imageView, boolean active) {
         if (active) {
             imageView.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             imageView.setVisibility(View.INVISIBLE);
         }
     }
@@ -543,8 +518,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         int act;
         if (pos == 0) {
             act = 0;
-        }
-        else {
+        } else {
             act = (int) Math.round((pos + 1) / 2.6) - 1;
         }
 
@@ -554,8 +528,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
             for (int i = 0; i < dotsArray.length; i++) {
                 if (i == act) {
                     setDotImageStatus(dotsArray[i], true);
-                }
-                else {
+                } else {
                     setDotImageStatus(dotsArray[i], false);
                 }
             }
@@ -565,8 +538,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
     private void setDotImageStatus(ImageView imageView, boolean active) {
         if (active) {
             imageView.setImageResource(R.drawable.indicator_dot_white);
-        }
-        else {
+        } else {
             imageView.setImageResource(R.drawable.indicator_dot_gray);
         }
     }
@@ -577,10 +549,9 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
     }
 
     @Override
-    public void onAttach (Context context) {
+    public void onAttach(Context context) {
         super.onAttach(context);
 
-        tfHelveticaBold = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Bold.ttf");
         tfHelveticaLight = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Light.ttf");
         tfHelveticaMedium = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Medium.ttf");
     }

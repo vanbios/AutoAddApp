@@ -1,32 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primary_green">#8bc34a</color>
-    <color name="primary_dark_green">#558b2f</color>
-
-    <color name="custom_teal_dark">#00796B</color>
-    <color name="custom_teal">#009688</color>
-    <color name="custom_teal_light">#B2DFDB</color>
-
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="gray_medium">#727272</color>
-    <color name="gray_dark">#ff616161</color>
     <color name="gray_light">#f2f2f2</color>
-
     <color name="gray_divider">#b1b1b1</color>
 
-    <color name="custom_cyan_dark">#0097A7</color>
-    <color name="custom_blue_gray">#607D8B</color>
-
-    <color name="create_account">#1c2531</color>
-    <color name="accent_green">#689f38</color>
-
-    <color name="custom_yellow">#f9c013</color>
-    <color name="custom_text_green">#00b332</color>
-    <color name="custom_red">#ff0000</color>
-    <color name="custom_text_gray">#808080</color>
-    <color name="custom_gray_dot">#5a5a5a</color>
-    <color name="custom_black_semi_transparent">#CC000000</color>
+    <color name="yellow">#f9c013</color>
+    <color name="red">#ff0000</color>
+    <color name="text_green">#00b332</color>
+    <color name="text_gray">#808080</color>
+    <color name="gray_dot">#5a5a5a</color>
+    <color name="black_semi_transparent">#CC000000</color>
 
 </resources>

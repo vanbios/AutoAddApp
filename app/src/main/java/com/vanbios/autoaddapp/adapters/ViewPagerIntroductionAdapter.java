@@ -3,6 +3,7 @@ package com.vanbios.autoaddapp.adapters;
 /**
  * Created by Ihor Bilous on 11.09.2015.
  */
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -28,7 +29,7 @@ public class ViewPagerIntroductionAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public float getPageWidth (int position) {
+    public float getPageWidth(int position) {
         return 0.93f;
     }
 

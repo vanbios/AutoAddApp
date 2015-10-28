@@ -28,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
         treatFragment(f, true, false);
     }
 
-    public void replaceFragment(CommonFragment f){
-        treatFragment(f,true,true);
-    }
-
     public Fragment getTopFragment() {
         return getSupportFragmentManager().findFragmentById(R.id.fragment_container);
     }
