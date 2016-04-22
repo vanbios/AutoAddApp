@@ -25,8 +25,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
     private TextView[] tvTonnageArray, tvMetricArray;
     private String[] metricValArray;
     private static int activeDotPos = 0, pagePos = 0, tonnagePos = 0;
-    private static final float MIN_SCALE = 0.8f;
-    private static final float MIN_ALPHA = 0.7f;
+    private static final float MIN_SCALE = 0.8f, MIN_ALPHA = 0.7f;
     private static final int SDK_VER = android.os.Build.VERSION.SDK_INT;
     private static int tvPadding;
     private Typeface tfHelveticaLight, tfHelveticaMedium;
@@ -158,17 +157,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         ImageView ivDot9 = (ImageView) view.findViewById(R.id.ivAutoChooseDot9);
         ImageView ivDot10 = (ImageView) view.findViewById(R.id.ivAutoChooseDot10);
 
-        dotsArray = new ImageView[10];
-        dotsArray[0] = ivDot1;
-        dotsArray[1] = ivDot2;
-        dotsArray[2] = ivDot3;
-        dotsArray[3] = ivDot4;
-        dotsArray[4] = ivDot5;
-        dotsArray[5] = ivDot6;
-        dotsArray[6] = ivDot7;
-        dotsArray[7] = ivDot8;
-        dotsArray[8] = ivDot9;
-        dotsArray[9] = ivDot10;
+        dotsArray = new ImageView[] {ivDot1,ivDot2,ivDot3,ivDot4,ivDot5,ivDot6,ivDot7,ivDot8,ivDot9,ivDot10};
 
         TextView tvTonnage1 = (TextView) view.findViewById(R.id.tvAutoChooseTypeTonnage1);
         TextView tvTonnage2 = (TextView) view.findViewById(R.id.tvAutoChooseTypeTonnage2);
@@ -179,12 +168,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         tvPadding = tvTonnage1.getPaddingTop();
         metricValArray = getResources().getStringArray(R.array.auto_types_metric_string_array);
 
-        tvTonnageArray = new TextView[5];
-        tvTonnageArray[0] = tvTonnage1;
-        tvTonnageArray[1] = tvTonnage2;
-        tvTonnageArray[2] = tvTonnage3;
-        tvTonnageArray[3] = tvTonnage4;
-        tvTonnageArray[4] = tvTonnage5;
+        tvTonnageArray = new TextView[]{tvTonnage1, tvTonnage2, tvTonnage3, tvTonnage4, tvTonnage5};
 
         for (TextView tv : tvTonnageArray) {
             tv.setOnClickListener(this);
@@ -195,10 +179,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         TextView tvMetric2 = (TextView) view.findViewById(R.id.tvAutoChooseTypeMetric2);
         TextView tvMetric3 = (TextView) view.findViewById(R.id.tvAutoChooseTypeMetric3);
 
-        tvMetricArray = new TextView[3];
-        tvMetricArray[0] = tvMetric1;
-        tvMetricArray[1] = tvMetric2;
-        tvMetricArray[2] = tvMetric3;
+        tvMetricArray = new TextView[]{tvMetric1, tvMetric2, tvMetric3};
 
         for (TextView tv : tvMetricArray) {
             tv.setOnClickListener(this);
@@ -215,12 +196,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         ImageView ivTriangle4 = (ImageView) view.findViewById(R.id.ivAutoChooseTriangle4);
         ImageView ivTriangle5 = (ImageView) view.findViewById(R.id.ivAutoChooseTriangle5);
 
-        trianglesArray = new ImageView[5];
-        trianglesArray[0] = ivTriangle1;
-        trianglesArray[1] = ivTriangle2;
-        trianglesArray[2] = ivTriangle3;
-        trianglesArray[3] = ivTriangle4;
-        trianglesArray[4] = ivTriangle5;
+        trianglesArray = new ImageView[]{ivTriangle1, ivTriangle2, ivTriangle3, ivTriangle4, ivTriangle5};
     }
 
     private void setViewPager() {
@@ -247,6 +223,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
                     view.setAlpha(MIN_ALPHA +
                             (scaleFactor - MIN_SCALE) /
                                     (1 - MIN_SCALE) * (1 - MIN_ALPHA));
+
                 } else if (position >= 0 && position <= 1) {    // [0,1]
 
                     view.setScaleX(1);
@@ -263,11 +240,7 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
                                     (1 - MIN_SCALE) * (1 - MIN_ALPHA));
                 }
 
-                if (pagePos == 25) {
-                    view.setTranslationX(-pageWidth / 12);
-                } else {
-                    view.setTranslationX(0f);
-                }
+                view.setTranslationX(pagePos == 25 ? -pageWidth / 12 : 0f);
             }
         });
 
@@ -429,118 +402,65 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
         setTonnageTVArray(tonPos);
         setMetricTVArray(metPos);
         tonnagePos = tonPos;
-        if (pos <= 13) {
-            setMetricTVValues(0);
-        } else {
-            setMetricTVValues(1);
-        }
+        setMetricTVValues(pos <= 13 ? 0 : 1);
     }
 
     private void setTonnageTVArray(int pos) {
         for (int i = 0; i < tvTonnageArray.length; i++) {
-            if (i == pos) {
-                setTonnageStatus(tvTonnageArray[i], true);
-                setTrianglesArray(i);
-            } else {
-                setTonnageStatus(tvTonnageArray[i], false);
-            }
+            setTonnageStatus(tvTonnageArray[i], i == pos);
+            if (i == pos) setTrianglesArray(i);
         }
     }
 
     private void setMetricTVArray(int pos) {
         for (int i = 0; i < tvMetricArray.length; i++) {
-            if (i == pos) {
-                setMetricStatus(tvMetricArray[i], true);
-            } else {
-                setMetricStatus(tvMetricArray[i], false);
-            }
+            setMetricStatus(tvMetricArray[i], i == pos);
         }
     }
 
     private void setMetricTVValues(int type) {
-        if (type == 0) {
-            for (int i = 0; i < tvMetricArray.length; i++) {
-                tvMetricArray[i].setText(metricValArray[i]);
-            }
-        } else {
-            for (int i = 0; i < tvMetricArray.length; i++) {
-                tvMetricArray[i].setText(metricValArray[i + 3]);
-            }
+        for (int i = 0; i < tvMetricArray.length; i++) {
+            tvMetricArray[i].setText(type == 0 ? metricValArray[i] : metricValArray[i + 3]);
         }
     }
 
     private void setTonnageStatus(TextView tv, boolean active) {
-        if (active) {
-            if (SDK_VER < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                tv.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_green));
-            } else {
-                tv.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.rounded_green));
-            }
-            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+        if (SDK_VER < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            tv.setBackgroundDrawable(getResources().getDrawable(active ? R.drawable.rounded_green : R.drawable.rounded_white));
         } else {
-            if (SDK_VER < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                tv.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_white));
-            } else {
-                tv.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.rounded_white));
-            }
-            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.text_gray));
+            tv.setBackground(ContextCompat.getDrawable(getContext(), active ? R.drawable.rounded_green : R.drawable.rounded_white));
         }
+        tv.setTextColor(ContextCompat.getColor(getContext(), active ? R.color.white : R.color.text_gray));
         tv.setPadding(0, tvPadding, 0, tvPadding);
     }
 
     private void setMetricStatus(TextView tv, boolean active) {
-        if (active) {
-            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.text_green));
-        } else {
-            tv.setTextColor(ContextCompat.getColor(getContext(), R.color.text_gray));
-        }
+        tv.setTextColor(ContextCompat.getColor(getContext(), active ? R.color.text_green : R.color.text_gray));
     }
 
     private void setTrianglesArray(int pos) {
         for (int i = 0; i < trianglesArray.length; i++) {
-            if (i == pos) {
-                setTrianglesImageStatus(trianglesArray[i], true);
-            } else {
-                setTrianglesImageStatus(trianglesArray[i], false);
-            }
+            setTrianglesImageStatus(trianglesArray[i], i == pos);
         }
     }
 
     private void setTrianglesImageStatus(ImageView imageView, boolean active) {
-        if (active) {
-            imageView.setVisibility(View.VISIBLE);
-        } else {
-            imageView.setVisibility(View.INVISIBLE);
-        }
+        imageView.setVisibility(active ? View.VISIBLE : View.INVISIBLE);
     }
 
     private void setDotsArray(int pos) {
-        int act;
-        if (pos == 0) {
-            act = 0;
-        } else {
-            act = (int) Math.round((pos + 1) / 2.6) - 1;
-        }
+        int act = pos == 0 ? 0 : (int) Math.round((pos + 1) / 2.6) - 1;
 
         if (act != activeDotPos) {
             activeDotPos = act;
-
             for (int i = 0; i < dotsArray.length; i++) {
-                if (i == act) {
-                    setDotImageStatus(dotsArray[i], true);
-                } else {
-                    setDotImageStatus(dotsArray[i], false);
-                }
+                setDotImageStatus(dotsArray[i], i == act);
             }
         }
     }
 
     private void setDotImageStatus(ImageView imageView, boolean active) {
-        if (active) {
-            imageView.setImageResource(R.drawable.indicator_dot_white);
-        } else {
-            imageView.setImageResource(R.drawable.indicator_dot_gray);
-        }
+        imageView.setImageResource(active ? R.drawable.indicator_dot_white : R.drawable.indicator_dot_gray);
     }
 
     @Override
@@ -551,7 +471,6 @@ public class FrgAutoChoose extends CommonFragment implements View.OnClickListene
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         tfHelveticaLight = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Light.ttf");
         tfHelveticaMedium = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Medium.ttf");
     }

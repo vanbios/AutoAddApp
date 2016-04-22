@@ -59,11 +59,9 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         Fragment fragment = getTopFragment();
         if (fragment instanceof CommonFragment) {
-
             if (backPressExitTime + 2000 > System.currentTimeMillis()) {
                 popAllFragments();
                 this.finish();
-
             } else {
                 ToastUtils.showClosableToast(this, getString(R.string.press_again_to_exit), 1);
                 backPressExitTime = System.currentTimeMillis();

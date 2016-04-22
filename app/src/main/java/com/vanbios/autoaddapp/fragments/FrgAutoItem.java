@@ -81,7 +81,6 @@ public class FrgAutoItem extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         tfHelveticaLight = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Light.ttf");
         tfHelveticaMedium = Typeface.createFromAsset(getActivity().getAssets(), "HelveticaNeueCyr_Medium.ttf");
     }
